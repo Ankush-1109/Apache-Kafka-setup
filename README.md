@@ -1,7 +1,8 @@
 # Apache-Kafka-setup
 This guide provides a step-by-step process to install and configure Apache Kafka on a Linux system, including both Zookeeper-based and KRaft (Kafka Raft) mode.
 
-Visit the official <a>Apache Kafka website.</a>
+Visit the official [Apache Kafka Website](https://kafka.apache.org/downloads)
+
 
 # Apache Kafka Setup Guide
 
