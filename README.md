@@ -55,7 +55,7 @@ Kafka requires **Zookeeper** for managing brokers, partitions, and leader electi
 We must start Zookeeper before starting Kafka.
 
 ### 3.1 Start Zookeeper
-1. Open **Terminal 1** and navigate to the Kafka directory:
+1. Open ***New Terminal*** and navigate to the Kafka directory:
    ```bash
    cd kafka_2.13-3.9.0
    ```
@@ -67,7 +67,7 @@ We must start Zookeeper before starting Kafka.
 This starts Zookeeper in the background.
 
 ### 3.2 Start Kafka Server
-1. Open **Terminal 2** and navigate to the Kafka directory:
+1. Open **New Terminal** and navigate to the Kafka directory:
    ```bash
    cd kafka_2.13-3.9.0
    ```
@@ -76,7 +76,7 @@ This starts Zookeeper in the background.
    sudo ./bin/kafka-server-start.sh ./config/server.properties
    ```
 
-At this point, Kafka is up and running with Zookeeper.
+At this point, Kafka is up and running with Zookeeper, meaning both are functioning without any errors. You can now close both terminals and proceed to step 4.
 
 ---
 
@@ -126,6 +126,12 @@ This guide explains step-by-step how to create topics in Apache Kafka, send mess
 
 ---
 
+Before starting the exercise, you need to ensure that your Kafka server (with Kraft) is running continuously. You can do this by executing the following command:
+   ```bash
+   sudo bin/kafka-server-start.sh config/kraft/server.properties
+   ```
+---
+
 ## Exercise 1: Creating and Testing a Simple Kafka Topic
 
 ### Step 1: Create a Kafka Topic
@@ -138,14 +144,14 @@ This guide explains step-by-step how to create topics in Apache Kafka, send mess
    ```bash
    sudo ./bin/kafka-topics.sh \
    --create \
-   --topic test-topic \
+   --topic <topic-name> \
    --bootstrap-server localhost:9092 \
    --partitions 1 \
    --replication-factor 1
    ```
 3. If the topic is successfully created, you will see:
-   ```
-   Created topic test-topic.
+   ```bash
+   Created topic <your-topic-name>.
    ```
 
 ---
@@ -163,7 +169,7 @@ We will now test the Kafka topic using a **producer** (to send messages) and a *
    ```bash
    sudo ./bin/kafka-console-producer.sh \
    --bootstrap-server localhost:9092 \
-   --topic test-topic
+   --topic <topic-name>
    ```
 3. After running this command, the terminal will wait for input. Type some messages:
    ```
@@ -180,7 +186,7 @@ We will now test the Kafka topic using a **producer** (to send messages) and a *
    ```bash
    sudo ./bin/kafka-console-consumer.sh \
    --bootstrap-server localhost:9092 \
-   --topic test-topic \
+   --topic <topic-name> \
    --from-beginning
    ```
 3. The consumer will display the messages that were sent from the **producer terminal**:
@@ -210,7 +216,7 @@ In this exercise, we will:
    ```bash
    sudo ./bin/kafka-topics.sh \
    --create \
-   --topic orders \
+   --topic <topic-name> \
    --bootstrap-server localhost:9092 \
    --partitions 2 \
    --replication-factor 1
@@ -233,7 +239,7 @@ In this exercise, we will:
    ```bash
    sudo ./bin/kafka-console-producer.sh \
    --bootstrap-server localhost:9092 \
-   --topic orders \
+   --topic <topic-name> \
    --property parse.key=true \
    --property key.separator=:
    ```
@@ -256,8 +262,8 @@ In this exercise, we will:
    ```bash
    sudo ./bin/kafka-console-consumer.sh \
    --bootstrap-server localhost:9092 \
-   --topic orders \
-   --group og \
+   --topic <topic-name> \
+   --group <group-name> \
    --from-beginning
    ```
 3. This consumer will receive messages from **one partition**, so it may show:
@@ -277,8 +283,8 @@ In this exercise, we will:
    ```bash
    sudo ./bin/kafka-console-consumer.sh \
    --bootstrap-server localhost:9092 \
-   --topic orders \
-   --group og \
+   --topic <topic-name> \
+   --group <group-name> \
    --from-beginning
    ```
 3. This consumer will receive messages from the **other partition**, so it may show:
@@ -341,7 +347,7 @@ This will display a list of all available topics in Kafka.
 To view detailed information about a specific topic, run:
 ```bash
 sudo ./bin/kafka-topics.sh --bootstrap-server localhost:9092 \
---topic your-topic-name --describe
+--topic <your-topic-name> --describe
 ```
 This command provides details like:
 - Number of partitions
@@ -361,7 +367,7 @@ Topic: test-topic  PartitionCount: 1  ReplicationFactor: 1  Configs: segment.byt
 To check details about a specific consumer group, use:
 ```bash
 sudo ./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 \
---group your-group-name --describe
+--group <your-group-name> --describe
 ```
 This will show:
 - The partitions assigned to the group
@@ -390,8 +396,13 @@ Kafka UI is a **web-based tool** that allows you to:
    ```bash
    ifconfig
    ```
-2. Look for your **IP address** (it will be something like `192.168.1.100`).
+2. Look for your **IP address** (it will be something like `172.10.0.1`).
 
+3. If you encounter any errors, you can install net-tools by running this command:
+   ```bash
+   sudo apt install net-tools
+   ```
+4. After the installation, rerun the ifconfig command to see your IP address.
 ---
 
 ### Step 2: Edit Kafka Server Properties
