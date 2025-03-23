@@ -13,7 +13,7 @@ Visit the official [Apache Kafka Website](https://kafka.apache.org/downloads)
 Visit the official Apache Kafka website.
 Select the latest binary version (e.g., kafka_2.13-3.9.0.tgz).
 Copy the download link of the selected version.
-![Kafka UI Screenshot](images/kafka-ui.png)
+![Kafka UI Screenshot](images/k-d-img.png)
 ### 1.2 Download Kafka using Terminal (Linux Users)
 1. Open a Terminal.
 2. Use the `wget` command to download Kafka:
