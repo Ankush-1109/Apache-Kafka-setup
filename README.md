@@ -13,7 +13,7 @@ Visit the official [Apache Kafka Website](https://kafka.apache.org/downloads)
 Visit the official Apache Kafka website.
 Select the latest binary version (e.g., kafka_2.13-3.9.0.tgz).
 Copy the download link of the selected version.
-
+![Kafka UI Screenshot](images/kafka-ui.png)
 ### 1.2 Download Kafka using Terminal (Linux Users)
 1. Open a Terminal.
 2. Use the `wget` command to download Kafka:
@@ -305,20 +305,6 @@ In this exercise, we will:
 
 ---
 
-## Summary of Commands
-
-| Action                               | Command                                                                                              |
-|--------------------------------------|------------------------------------------------------------------------------------------------------|
-| Create a topic (`test-topic`)        | `sudo ./bin/kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1` |
-| Start producer for `test-topic`      | `sudo ./bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic`          |
-| Start consumer for `test-topic`      | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning` |
-| Create a topic (`orders`) with 2 partitions | `sudo ./bin/kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 2 --replication-factor 1` |
-| Start producer for `orders`          | `sudo ./bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic orders --property parse.key=true --property key.separator=:` |
-| Start consumer 1 (`orders`, group `og`) | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic orders --group og --from-beginning` |
-| Start consumer 2 (`orders`, group `og`) | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic orders --group og --from-beginning` |
-
----
-
 ``
 
 # Apache Kafka Guide: Managing Topics, Consumer Groups, and Kafka UI Setup
@@ -487,6 +473,13 @@ Kafka UI is a **web-based tool** that allows you to:
 
 | Action                               | Command                                                                                             |
 |--------------------------------------|-----------------------------------------------------------------------------------------------------|
+| Create a topic (`test-topic`)        | `sudo ./bin/kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1` |
+| Start producer for `test-topic`      | `sudo ./bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic`          |
+| Start consumer for `test-topic`      | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning` |
+| Create a topic (`orders`) with 2 partitions | `sudo ./bin/kafka-topics.sh --create --topic orders --bootstrap-server localhost:9092 --partitions 2 --replication-factor 1` |
+| Start producer for `orders`          | `sudo ./bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic orders --property parse.key=true --property key.separator=:` |
+| Start consumer 1 (`orders`, group `og`) | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic orders --group og --from-beginning` |
+| Start consumer 2 (`orders`, group `og`) | `sudo ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic orders --group og --from-beginning` |
 | List all Kafka topics                | `sudo ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list`                               |
 | Describe a specific topic            | `sudo ./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic your-topic-name --describe`   |
 | Describe a consumer group            | `sudo ./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group your-group-name --describe` |
