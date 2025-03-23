@@ -13,7 +13,7 @@ Visit the official [Apache Kafka Website](https://kafka.apache.org/downloads)
 Visit the official Apache Kafka website.
 Select the latest binary version (e.g., kafka_2.13-3.9.0.tgz).
 Copy the download link of the selected version.
-![Kafka UI Screenshot](images/k-d-img.png)
+![Kafka Download Link Image](images/k-d-img.png)
 ### 1.2 Download Kafka using Terminal (Linux Users)
 1. Open a Terminal.
 2. Use the `wget` command to download Kafka:
@@ -194,7 +194,7 @@ We will now test the Kafka topic using a **producer** (to send messages) and a *
    Hi
    Hello Everyone
    ```
-
+![Kafka Exercise-1](images/k-ex1.png)
 ---
 
 ## Exercise 2: Creating and Testing a Kafka Topic with Multiple Partitions
@@ -294,6 +294,8 @@ In this exercise, we will:
    ```
 
    Now, you have successfully created Kafka topics, sent messages, and tested Kafka's partitioning mechanism using multiple consumers.
+
+   ![Kafka Exercise-2](images/k-ex2.png)
 ---
 
 ## Explanation of Kafka Partitioning
@@ -468,7 +470,12 @@ Kafka UI is a **web-based tool** that allows you to:
    - Check messages
 
 ---
+![Kafka UI Main](images/k-db-main.png)
+![Kafka UI Broker](images/k-db-broker.png)
+![Kafka UI Topics](images/k-db-topics.png)
+![Kafka UI Consumer](images/k-db-consumers.png)
 
+---
 ## Summary of Commands
 
 | Action                               | Command                                                                                             |
